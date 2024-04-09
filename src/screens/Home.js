@@ -11,11 +11,11 @@ import {
 import React from 'react';
 import Carousel from '../components/Carousel'
 import SearchBar from '../components/SearchBar';
-import categories from '../subComponents/categories';
-import restaurantData from '../subComponents/restaurants';
-import icons from '../subComponents/icons';
+import categories from '../constants/categories';
+import restaurantData from '../constants/restaurants';
+import icons from '../constants/icons';
 
-const Home = () => {
+const Home = ({ navigation }) => {
 
     const [restaurants, setRestaurants] = React.useState(restaurantData);
     const [selectedCategory, setSelectedCategory] = React.useState(null)
@@ -79,7 +79,7 @@ const Home = () => {
                             height: 50,
                             borderRadius: 25,
                             alignItems: 'center',
-                            backgroundColor: (selectedCategory?.id === item.id) ? "white" : '#898C95',
+                            backgroundColor: (selectedCategory?.id === item.id) ? "white" : '#e3d7bf'//'#898C95',
                         }}
                     >
                         <Image
@@ -129,7 +129,9 @@ const Home = () => {
                 style={{ 
                     marginBottom: 20,
                 }}
-            //onPress={} => navigate to restorantScreen
+                onPress={() => navigation.navigate('Restaurant', {
+                    item,
+                })} 
             >
                 <View 
                     style= {{
