@@ -13,10 +13,14 @@ import Carousel from '../components/Carousel'
 import SearchBar from '../components/SearchBar';
 import categories from '../constants/categories';
 import restaurantData from '../constants/restaurants';
+import { useNavigation } from '@react-navigation/native';
 import icons from '../constants/icons';
+import Restaurant from './Restaurant';
 
-const Home = ({ navigation }) => {
 
+const Home = () => {
+
+    // Restaurant list & category list (data)
     const [restaurants, setRestaurants] = React.useState(restaurantData);
     const [selectedCategory, setSelectedCategory] = React.useState(null)
 
@@ -36,7 +40,7 @@ const Home = ({ navigation }) => {
 
     );
 
-
+       // selectCategory function
     function getCategoryNameById(id) {
         let category = categories.filter(a => a.id === id)
 
@@ -57,6 +61,7 @@ const Home = ({ navigation }) => {
     //rendeder categories section
 
     function renderCategories() {
+
         const renderItem = ({ item }) => {
             return (
                 <TouchableOpacity
@@ -123,6 +128,7 @@ const Home = ({ navigation }) => {
     };
        //render Restaurant List mainMenu
     function renderRestaurantList() {
+        const navigation = useNavigation()
         console.log(restaurants);
         const renderItem = ({ item }) => (
             <TouchableOpacity
