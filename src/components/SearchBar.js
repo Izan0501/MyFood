@@ -6,8 +6,12 @@ import {
 } from 'react-native'
 import React from 'react'
 import { Icon } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native'
 
 const SearchBar = () => {
+
+    const navigation = useNavigation();
+
     return (
         <View>
             <View style={styles.inputContainer}>
@@ -22,7 +26,9 @@ const SearchBar = () => {
                     cursorColor={'gray'}
                 />
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Settings')}
+            >
                 <View style={styles.navBtn}>
                     <Icon
                         source={'tune'}

@@ -4,7 +4,12 @@ import React from 'react'
 const Restaurant = () => {
   return (
     <View>
-      <Text>Restaurant</Text>
+      <Text
+       style={{
+        marginTop: '100%',
+        marginLeft: '42%'
+      }}
+      >Restaurant</Text>
     </View>
   )
 }

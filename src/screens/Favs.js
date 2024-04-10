@@ -7,7 +7,7 @@ const Favs = () => {
             <Text
                 style={{
                     marginTop: '100%',
-                    marginLeft: '44.5%'
+                    marginLeft: '46.5%'
                 }}
             >Favs</Text>
         </View>

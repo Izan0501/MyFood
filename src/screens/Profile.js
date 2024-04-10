@@ -7,7 +7,7 @@ const Profile = () => {
             <Text
                 style={{
                     marginTop: '100%',
-                    marginLeft: '44.5%'
+                    marginLeft: '45.5%'
                 }}
             >Profile</Text>
         </View>

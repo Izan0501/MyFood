@@ -9,18 +9,22 @@ import {
 } from 'react-native'
 
 import React from 'react';
-import Carousel from '../components/Carousel'
+import Carousel from '../components/Carousel';
 import SearchBar from '../components/SearchBar';
 import categories from '../constants/categories';
 import restaurantData from '../constants/restaurants';
-import { useNavigation } from '@react-navigation/native';
 import icons from '../constants/icons';
+import { useNavigation } from '@react-navigation/native';
 
-const Home = ({ navigation }) => {
 
+
+const Home = () => {
+
+    const navigation = useNavigation()
     // Restaurant list & category list (data)
     const [restaurants, setRestaurants] = React.useState(restaurantData);
-    const [selectedCategory, setSelectedCategory] = React.useState(null)
+    const [selectedCategory, setSelectedCategory] = React.useState(null);
+
 
     return (
 
@@ -32,26 +36,26 @@ const Home = ({ navigation }) => {
                 <Carousel />
                 <SearchBar />
                 {renderCategories()}
-                {renderRestaurantList()}
+                {renderRestaurantList(navigation)}
             </View>
         </SafeAreaView>
 
     );
 
-       // selectCategory function
+    // selectCategory function
     function getCategoryNameById(id) {
         let category = categories.filter(a => a.id === id)
 
-        if(category.length > 0) 
+        if (category.length > 0)
             return category[0].name
         return ''
-        
-        
+
+
     }
 
     function onSelectedCategory(category) {
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
-    
+
         setRestaurants(restaurantList)
         setSelectedCategory(category)
     }
@@ -61,6 +65,7 @@ const Home = ({ navigation }) => {
     function renderCategories() {
 
         const renderItem = ({ item }) => {
+
             return (
                 <TouchableOpacity
                     style={{
@@ -124,21 +129,21 @@ const Home = ({ navigation }) => {
             </View>
         );
     };
-       //render Restaurant List mainMenu
+
+    //render Restaurant List mainMenu
     function renderRestaurantList() {
-        const navigation = useNavigation()
-        console.log(restaurants);
+        //console.log(itemIdSelected);
+
         const renderItem = ({ item }) => (
+
             <TouchableOpacity
-                style={{ 
+                style={{
                     marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('Restaurant', {
-                    item,
-                })} 
+                onPress={() => navigation.navigate('Restaurant', item)}
             >
-                <View 
-                    style= {{
+                <View
+                    style={{
                         marginBottom: 10,
                     }}>
                     <Image
@@ -172,7 +177,7 @@ const Home = ({ navigation }) => {
                     </View>
                 </View>
 
-                {/*restaurant-info*/ }
+                {/*restaurant-info*/}
                 <Text style={{
                     fontSize: 20,
                     lineHeight: 30,
@@ -180,15 +185,15 @@ const Home = ({ navigation }) => {
                 }}>{item.name}</Text>
 
                 <View
-                    style = {{
+                    style={{
                         marginTop: 10,
                         flexDirection: 'row'
                     }}
                 >
                     {/**Rating  */}
-                    <Image 
+                    <Image
                         source={icons.star}
-                        style= {{
+                        style={{
                             height: 20,
                             width: 20,
                             tintColor: "#FC6D3F",
@@ -196,7 +201,7 @@ const Home = ({ navigation }) => {
                         }}
                     />
                     <Text
-                        style= {{
+                        style={{
                             fontWeight: '600',
                             marginBottom: 10
                         }}
@@ -204,28 +209,28 @@ const Home = ({ navigation }) => {
 
                     {/**Categories */}
                     <View
-                        style= {{
+                        style={{
                             flexDirection: 'row',
                             marginLeft: 10
                         }}
                     >
                         {
-                            item.categories.map((categoryId)=> {
-                                return(
+                            item.categories.map((categoryId) => {
+                                return (
                                     <View
-                                        style= {{
+                                        style={{
                                             flexDirection: 'row'
                                         }}
                                         key={categoryId}
                                     >
                                         <Text
-                                            style = {{
-                                                fontWeight:'500'
-                                                
+                                            style={{
+                                                fontWeight: '500'
+
                                             }}
                                         >{getCategoryNameById(categoryId)}</Text>
                                         <Text
-                                            style= {{
+                                            style={{
                                                 color: '#898C95',
                                                 lineHeight: 22,
                                                 fontSize: 20
@@ -237,14 +242,14 @@ const Home = ({ navigation }) => {
                         }
                         {/**Price */}
                         {
-                            [1,2,3].map((priceRating) => (
+                            [1, 2, 3].map((priceRating) => (
                                 <Text
                                     key={priceRating}
-                                    style= {{
+                                    style={{
                                         marginTop: -5,
                                         lineHeight: 22,
-                                        color: (priceRating <= item.priceRating) ? 
-                                        '#000' : '#898C95',
+                                        color: (priceRating <= item.priceRating) ?
+                                            '#000' : '#898C95',
                                         fontSize: 14,
                                         fontWeight: '600'
                                     }}
@@ -254,6 +259,7 @@ const Home = ({ navigation }) => {
                     </View>
                 </View>
             </TouchableOpacity>
+
         )
 
         return (
@@ -261,7 +267,7 @@ const Home = ({ navigation }) => {
                 showsVerticalScrollIndicator={false}
                 data={restaurants}
                 keyExtractor={item => `${item.id}`}
-                renderItem={renderItem}
+                renderItem={renderItem} setItemIdSelected
                 contentContainerStyle={{
                     paddingHorizontal: 20,
                     paddingBottom: 30,

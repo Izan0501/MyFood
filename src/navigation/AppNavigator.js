@@ -4,24 +4,25 @@ import {
 } from 'react-native';
 
 import {
-    Home,
-    Search,
     Profile,
-    Favs
+    Favs,
+    Cart
 } from '../screens';
 
+import StackNav from './StackNav';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
 const screenOptions = {
     tabBarShowLabel: false,
     headerShown: false,
+    tabBarHideOnKeyboard: true,
     tabBarStyle: {
         position: 'relative',
         margin: 0,
@@ -35,17 +36,19 @@ const screenOptions = {
 }
 
 const AppNavigator = () => {
+
     return (
         <NavigationContainer>
-            <ScreenNavigator/>
             <Tab.Navigator
+                backBehavior='Main'
+                initialRouteName='Main'
                 screenOptions={
                     screenOptions
                 }
             >
                 <Tab.Screen
-                    name='Home'
-                    component={Home}
+                    name='Main'
+                    component={StackNav}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
@@ -70,8 +73,8 @@ const AppNavigator = () => {
                 />
 
                 <Tab.Screen
-                    name='Search'
-                    component={Search}
+                    name='Cart'
+                    component={Cart}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
@@ -81,8 +84,8 @@ const AppNavigator = () => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    <AntDesign
-                                        name="search1"
+                                    <Feather
+                                        name="shopping-bag"
                                         size={26}
                                         color={
                                             focused ? '#F9813A' : '#E5E5E5'
@@ -150,16 +153,8 @@ const AppNavigator = () => {
             </Tab.Navigator>
         </NavigationContainer>
 
-    )
-    
-    function ScreenNavigator() {
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name='Home' component={Home} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    }
-}
+    );
+};
 
 export default AppNavigator
 

@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Search = () => {
+const Cart = () => {
   return (
     <View>
       <Text
       style= {{
         marginTop: '100%',
-        marginLeft: '44.5%'
+        marginLeft: '47%'
       }}
-      >Search</Text>
+      >Cart</Text>
     </View>
   )
 }
 
-export default Search
+export default Cart
 
 const styles = StyleSheet.create({})
