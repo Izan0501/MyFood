@@ -15,10 +15,8 @@ import categories from '../constants/categories';
 import restaurantData from '../constants/restaurants';
 import { useNavigation } from '@react-navigation/native';
 import icons from '../constants/icons';
-import Restaurant from './Restaurant';
 
-
-const Home = () => {
+const Home = ({ navigation }) => {
 
     // Restaurant list & category list (data)
     const [restaurants, setRestaurants] = React.useState(restaurantData);

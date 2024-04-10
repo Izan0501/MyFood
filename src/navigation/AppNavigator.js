@@ -1,15 +1,10 @@
 import {
-    Image,
     StyleSheet,
-    Text,
     View,
-    TouchableOpacity,
-    SafeAreaView
 } from 'react-native';
 
 import {
     Home,
-    OrderDelivery,
     Search,
     Profile,
     Favs
@@ -42,7 +37,7 @@ const screenOptions = {
 const AppNavigator = () => {
     return (
         <NavigationContainer>
-            <AppNavigator/>
+            <ScreenNavigator/>
             <Tab.Navigator
                 screenOptions={
                     screenOptions
@@ -157,7 +152,7 @@ const AppNavigator = () => {
 
     )
     
-    function AppNavigator() {
+    function ScreenNavigator() {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='Home' component={Home} />
