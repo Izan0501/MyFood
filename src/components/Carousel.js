@@ -11,21 +11,24 @@ const Carousel = () => {
   //get dimensions
   const screenWidth = Dimensions.get('window').width;
 
-  //const [activeIndex, setActiveIndex] = useState(0);
 
   //dataCarousel
   const carouselData = [
     {
-      id: '01',
+      id: '001',
       image: require('../assets/slider_1.jpg')
     },
     {
-      id: '02',
-      image: require('../assets/slider_2.jpg')
+      id: '002',
+      image: require('../assets/slider 6.png')
     },
     {
-      id: '03',
-      image: require('../assets/slider_3.jpg')
+      id: '003',
+      image: require('../assets/slider 5.png')
+    },
+    {
+      id: '004',
+      image: require('../assets/slider_7.png')
     }
   ];
 
@@ -51,14 +54,11 @@ const Carousel = () => {
     <View style={styles.container}>
       <FlatList
         data={carouselData}
-        //ref={flatlistRef}
-        //getItemLayout={getItemLayout}
         renderItem={renderItem}
         horizontal={true}
         pagingEnabled={true}
         keyExtractor={(item) => item.id}
         showsHorizontalScrollIndicator={false}
-      //onScroll={handleScroll}
       />
     </View>
   )
