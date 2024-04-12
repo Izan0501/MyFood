@@ -13,6 +13,7 @@ import {
 
 import React from "react";
 import { MaterialIcons } from '@expo/vector-icons';
+import icons from "../constants/icons";
 import { Feather } from '@expo/vector-icons';
 
 
@@ -79,30 +80,10 @@ const Restaurant = ({ route, navigation }) => {
 
   {/**restaurant products */ }
 
-  const renderImage = () => {
+  function renderFoodData() {
 
     const screenWidth = Dimensions.get('window').width;
 
-    restaurants?.menu.map((item, index) => {
-
-      <View
-        key={`menu-${index}`}
-        style={{ alignItems: 'center' }}
-      >
-        <Image
-          source={item}
-          resizeMod="cover"
-          style={{
-            width: screenWidth,
-            height: '100%'
-          }}
-        />
-      </View>
-    });
-
-  };
-
-  function renderFoodData() {
     return (
       <Animated.ScrollView
         horizontal
@@ -111,7 +92,161 @@ const Restaurant = ({ route, navigation }) => {
         snapToAlignment={'center'}
         showsHorizontalScrollIndicator={false}
       >
-        {renderImage()}
+        {
+          restaurants?.menu.map((item, index) => (
+            <View
+              key={`menu-${index}`}
+              style={{ alignItems: 'center' }}
+            >
+              <View
+                style={{
+                  height: '45%'
+                }}
+              >
+                <Image
+                  source={item.image}
+                  resizeMod="cover"
+                  style={{
+                    marginRight: 4,
+                    marginTop: 0,
+                    width: screenWidth,
+                    height: '100%',
+                    borderRadius: 50
+                  }}
+                />
+
+                {/**ProductQuantity */}
+
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: -20,
+                    width: screenWidth,
+                    height: 50,
+                    justifyContent: 'center',
+                    flexDirection: 'row'
+                  }}
+                >
+                  <TouchableOpacity
+                    style={{
+                      width: 50,
+                      backgroundColor: 'white',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderTopLeftRadius: 25,
+                      borderBottomLeftRadius: 25,
+                      ...styles.shadow
+                    }}
+                  >
+                    <Text
+                      style={{
+                        marginTop: 0,
+                        fontSize: 25,
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      -
+                    </Text>
+                  </TouchableOpacity>
+                  <View
+                    style={{
+                      width: 50,
+                      backgroundColor: 'white',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      //...styles.shadow
+                    }}
+                  >
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      5
+                    </Text>
+                  </View>
+                  <TouchableOpacity
+                    style={{
+                      width: 50,
+                      backgroundColor: 'white',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderTopRightRadius: 25,
+                      borderBottomRightRadius: 25,
+                      ...styles.shadow
+                    }}
+                  >
+                    <Text
+                      style={{
+                        marginTop: 0,
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      +
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              {/**name & desciption*/}
+
+              <View
+                style={{
+                  width: screenWidth,
+                  alignItems: "center",
+                  marginTop: 15,
+                  paddingHorizontal: 25
+                }}
+              >
+                <Text
+                  style={{
+                    marginVertical: 15,
+                    textAlign: 'center',
+                    fontSize: 20,
+                    fontWeight: 'bold'
+                  }}
+                >
+                  {`${item.name} - $${item.price}`}
+                </Text>
+                <Text
+                  style= {{
+                    fontSize: 15,
+                    fontWeight: '500'
+                  }}
+                >
+                  {item.description}
+                </Text>
+              </View>
+
+              {/**caloriesInfo */}
+
+              <View
+               style= {{
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'row',
+                marginTop: 15
+               }}
+              >
+                <Image 
+                  source={icons.fire}
+                  style= {{
+                    width: 20,
+                    height: 20,
+                    marginRight: 7
+                  }}
+                />
+                <Text 
+                  style= {{
+                    fontSize: 15
+                  }}
+                >{item.calories.toFixed(2)} cal</Text>
+              </View>
+            </View>
+          ))
+        }
       </Animated.ScrollView>
     );
 
@@ -128,6 +263,7 @@ const Restaurant = ({ route, navigation }) => {
   );
 
 };
+
 
 export default Restaurant;
 
@@ -165,5 +301,15 @@ const styles = StyleSheet.create({
     width: 50,
     paddingRight: 20,
     justifyContent: 'center'
+  },
+  shadow: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 1,
   }
 });

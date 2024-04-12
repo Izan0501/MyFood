@@ -1,7 +1,7 @@
- // price rating
- const affordable = 1
- const fairPrice = 2
- const expensive = 3
+// price rating
+const affordable = 1
+const fairPrice = 2
+const expensive = 3
 
 const restaurantData = [
     {
@@ -144,7 +144,7 @@ const restaurantData = [
         menu: [
             {
                 menuId: 9,
-                name: "Sushi sets", 
+                name: "Sushi sets",
                 image: require('../assets/images/sushi.jpg'),
                 description: "Fresh salmon, sushi rice, fresh juicy avocado",
                 calories: 100,
@@ -223,7 +223,7 @@ const restaurantData = [
         },
         menu: [
             {
-                menuId: 12,
+                menuId: 14,
                 name: "Teh C Peng",
                 image: require('../assets/images/teh-c-peng.jpg'),
                 description: "Three Layer Teh C Peng",
@@ -231,7 +231,7 @@ const restaurantData = [
                 price: 2
             },
             {
-                menuId: 13,
+                menuId: 15,
                 name: "ABC Ice Kacang",
                 image: require('../assets/images/ice-kacang.jpg'),
                 description: "Shaved Ice with red beans",
@@ -239,7 +239,7 @@ const restaurantData = [
                 price: 3
             },
             {
-                menuId: 14,
+                menuId: 16,
                 name: "Kek Lapis",
                 image: require('../assets/images/kek-lapis.jpg'),
                 description: "Layer cakes",
