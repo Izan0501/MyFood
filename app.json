@@ -9,7 +9,7 @@
     "splash": {
       "image": "./src/assets/MyFood-logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f4f4f4f4"
     },
     "assetBundlePatterns": [
       "**/*"

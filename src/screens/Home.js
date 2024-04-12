@@ -6,6 +6,7 @@ import {
     SafeAreaView,
     TouchableOpacity,
     Image,
+    Pressable
 } from 'react-native'
 
 import React from 'react';
@@ -67,7 +68,7 @@ const Home = () => {
         const renderItem = ({ item }) => {
 
             return (
-                <TouchableOpacity
+                <Pressable
                     style={{
                         marginTop: -19,
                         padding: 10,
@@ -111,7 +112,7 @@ const Home = () => {
                     >
                         {item.name}
                     </Text>
-                </TouchableOpacity>
+                </Pressable>
             )
         }
 
@@ -140,7 +141,7 @@ const Home = () => {
                 style={{
                     marginBottom: 20,
                 }}
-                onPress={() => navigation.navigate('Restaurant', item)}
+                onPress={() => navigation.navigate('Restaurant', item) }
             >
                 <View
                     style={{

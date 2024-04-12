@@ -6,8 +6,8 @@
 const restaurantData = [
     {
         id: 1,
-        name: "Special Burger",
-        rating: 4.8,
+        name: "Aloha Burgers",
+        rating: 4.6,
         categories: [5, 7],
         priceRating: affordable,
         image: require('../assets/images/burger-restaurant.jpg'),
@@ -49,8 +49,8 @@ const restaurantData = [
     },
     {
         id: 2,
-        name: "Special Pizza",
-        rating: 4.8,
+        name: "Pizza Wave",
+        rating: 4.2,
         categories: [2, 4, 6],
         priceRating: expensive,
         image: require('../assets/images/pizza-restaurant.jpg'),
@@ -100,8 +100,8 @@ const restaurantData = [
     },
     {
         id: 3,
-        name: "Special Hotdogs",
-        rating: 4.8,
+        name: "HotsiDogsy",
+        rating: 4.3,
         categories: [3],
         priceRating: expensive,
         image: require('../assets/images/hot-dog-restaurant.jpg'),
@@ -127,8 +127,8 @@ const restaurantData = [
     },
     {
         id: 4,
-        name: "Special Sushi",
-        rating: 4.8,
+        name: "Sushi Place",
+        rating: 4.5,
         categories: [8],
         priceRating: expensive,
         image: require('../assets/images/japanese-restaurant.jpg'),
@@ -154,8 +154,8 @@ const restaurantData = [
     },
     {
         id: 5,
-        name: "Special Cuisine",
-        rating: 4.8,
+        name: "TheKitchen 24HS",
+        rating: 4.1,
         categories: [1, 2],
         priceRating: affordable,
         image: require('../assets/images/noodle-shop.jpg'),
@@ -207,8 +207,8 @@ const restaurantData = [
     {
 
         id: 6,
-        name: "Special Dessets",
-        rating: 4.9,
+        name: "SweetSpot Cakes",
+        rating: 3.9,
         categories: [9, 10],
         priceRating: affordable,
         image: require('../assets/images/kek-lapis-shop.jpg'),
